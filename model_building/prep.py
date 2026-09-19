@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv("/content/project/data/machine-failure-prediction.csv")
+df = pd.read_csv("/content/drive/MyDrive/machine-failure-prediction .csv")
 df.drop(columns=["UDI"], inplace=True)
 
 # NOTE: 'Type' is intentionally left as raw strings (H/L/M).
