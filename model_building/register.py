@@ -1,8 +1,6 @@
-from pathlib import Path
 import pandas as pd
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-RAW_PATH = PROJECT_ROOT / "data" / "machine-failure-prediction.csv"
+RAW_PATH = "/content/project/data/machine-failure-prediction.csv"
 
 # Load the raw dataset
 df = pd.read_csv(RAW_PATH)
