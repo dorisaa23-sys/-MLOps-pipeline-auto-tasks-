@@ -3,8 +3,18 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the model committed by the pipeline (sits next to this file)
-model_path = os.path.join(os.path.dirname(__file__), "best_machine_failure_model_v1.joblib")
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "best_machine_failure_model_v1.joblib"
+)
+
+if not os.path.exists(model_path):
+    st.error(
+        "The trained model is unavailable. "
+        "Run the GitHub Actions pipeline first."
+    )
+    st.stop()
+
 model = joblib.load(model_path)
 
 st.title("Machine Failure Prediction App")
