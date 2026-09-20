@@ -3,19 +3,11 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model_path = os.path.join(
-    os.path.dirname(__file__),
-    "best_machine_failure_model_v1.joblib"
-)
+from pathlib import Path
+import joblib
 
-if not os.path.exists(model_path):
-    st.error(
-        "The trained model is unavailable. "
-        "Run the GitHub Actions pipeline first."
-    )
-    st.stop()
-
-model = joblib.load(model_path)
+MODEL_PATH = Path(__file__).resolve().parent / "best_machine_failure_model_v1.joblib"
+model = joblib.load(MODEL_PATH)
 
 st.title("Machine Failure Prediction App")
 st.write("""
