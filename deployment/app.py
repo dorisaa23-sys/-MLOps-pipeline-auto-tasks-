@@ -2,9 +2,7 @@ import os
 import streamlit as st
 import pandas as pd
 import joblib
-
 from pathlib import Path
-import joblib
 
 MODEL_PATH = Path(__file__).resolve().parent / "best_machine_failure_model_v1.joblib"
 model = joblib.load(MODEL_PATH)
