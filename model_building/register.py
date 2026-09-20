@@ -1,16 +1,22 @@
+from pathlib import Path
 import pandas as pd
 
-RAW_PATH = "/content/project/data/machine-failure-prediction.csv"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+RAW_PATH = PROJECT_ROOT / "data" / "machine-failure-prediction.csv"
+
+print(f"Reading dataset from: {RAW_PATH}")
 
 # Load the raw dataset
 df = pd.read_csv(RAW_PATH)
 
-# Validate that the expected columns are present before registering it
+# Validate the expected columns
 expected_columns = [
     "UDI", "Type", "Air temperature", "Process temperature",
     "Rotational speed", "Torque", "Tool wear", "Failure",
 ]
-missing = [c for c in expected_columns if c not in df.columns]
+
+missing = [column for column in expected_columns if column not in df.columns]
+
 if missing:
     raise ValueError(f"Dataset is missing expected columns: {missing}")
 
